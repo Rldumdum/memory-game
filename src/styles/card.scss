@@ -1,0 +1,22 @@
+.card{
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  width:300px;
+  height:300px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 800ms ;
+  margin:15px
+}
+
+.card:hover{
+  opacity: 50%;
+  transition: 800ms ;
+}
+.card-img{
+  height:250px;
+  border-radius: 12px;
+}
+.card-text{
+  font-size: 16px;
+  color: black; }
