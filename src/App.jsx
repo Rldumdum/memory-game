@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./styles/outerCard.scss";
 import CardItem from "./components/CardItem";
@@ -16,9 +16,10 @@ const images = [
 
 function App() {
   const [cards, setCards] = useState([]);
-  const [score, setScore] = useState(0);
   const [gameStarted, setGameStarted] = useState(false);
   const [cardChoice, setCardChoice] = useState([]);
+  const [score, setScore] = useState(-2);
+  const [bestScore, setBestScore] = useState(0);
   const shuffleCards = () => {
     const shuffledCards = [...images]
       .sort(() => Math.random() - 0.5)
@@ -31,21 +32,48 @@ function App() {
   const handleChoice = (card) => {
     setCardChoice((prevCard) => [...prevCard, card]);
   };
-  cardChoice.map((item) => console.log('items in choice', item.id));
-  console.log(cardChoice);
+  const checkvalue = cardChoice.map((item) => {
+    return item.id;
+  });
 
-  console.log(score)
+  const isDuplicate = checkvalue.some((item, index) => {
+    console.log('item', item)
+    return checkvalue.indexOf(item) != index;
+  });
+
+  useEffect(() => {
+    if (isDuplicate) {
+      setCardChoice([]);
+      setScore(-1);
+    } else {
+      setScore((prevScore) => prevScore + 1);
+    }
+    return () => {};
+  }, [cardChoice, isDuplicate]);
+
+  useEffect(() => {
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+
+    cards.sort(() => Math.random() - 0.6);
+
+    return () => {};
+  }, [score, bestScore, cards]);
+
   return (
     <div>
       <h1>Memory game</h1>
       <p>
-        Instruction: To get points, you must only click the image once. Or else,
-        your score will reset
+        Instruction: Test your memory skills by clicking on different images
+        without repeating.
       </p>
-      <div>
-        <p>Score: 0</p>
-        <p>Best Score: 10</p>
-      </div>
+      {gameStarted && (
+        <div>
+          <p>Score: {score}</p>
+          <p>Best Score: {bestScore}</p>
+        </div>
+      )}
       {!gameStarted && <button onClick={shuffleCards}>Start Game</button>}
       {gameStarted && (
         <div className="outerCard">

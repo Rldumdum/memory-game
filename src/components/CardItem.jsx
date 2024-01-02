@@ -1,12 +1,10 @@
-import React from "react";
 import "../styles/card.scss";
+import PropTypes from "prop-types";
 
-const CardItem = ({ card, handleChoice}) => {
-
+const CardItem = ({ card, handleChoice }) => {
   const handleClick = () => {
-    handleChoice(card)
-
-  }
+    handleChoice(card);
+  };
   return (
     <div className="card" onClick={handleClick}>
       <div className="card-img">
@@ -16,5 +14,12 @@ const CardItem = ({ card, handleChoice}) => {
     </div>
   );
 };
-
+CardItem.propTypes = {
+  card: PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    // Add other properties as needed
+  }).isRequired,
+  handleChoice: PropTypes.func.isRequired,
+};
 export default CardItem;
