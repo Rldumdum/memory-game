@@ -59,7 +59,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [gameStarted, setGameStarted] = useState(false);
   const [cardChoice, setCardChoice] = useState([]);
-  const [score, setScore] = useState(-2);
+  const [score, setScore] = useState(-1);
   const [bestScore, setBestScore] = useState(0);
   const [difficulty, setDifficulty] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
