@@ -5,6 +5,7 @@ import CardItem from "./components/CardItem";
 import { Shake } from "reshake";
 import Modal from "react-modal";
 import { motion } from "framer-motion";
+import backIcon from '/back-icon.svg'
 
 const easy_images = [
   { src: "https://picsum.photos/id/29/350/300", name: "Go Wild" },
@@ -189,7 +190,7 @@ function App() {
               setScore(0);
               setGameStarted(false);
             }}
-            src="/back-icon.svg"
+            src={backIcon}
           ></img>
           <h3 style={{ position: "absolute", right: "100px" }}>
             Max Score: {maxscore}

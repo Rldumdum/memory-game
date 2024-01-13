@@ -6,3 +6,15 @@
   justify-content: center;
 
 }
+
+@media only screen and (max-width: 1440px) {
+  .outerCard{
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .outerCard{
+  grid-template-columns: 1fr 1fr  ;
+  }
+}
