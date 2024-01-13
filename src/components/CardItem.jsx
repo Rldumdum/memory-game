@@ -1,4 +1,4 @@
-import "../styles/card.scss";
+import "../styles/card.css";
 import PropTypes from "prop-types";
 
 const CardItem = ({ card, handleChoice, h }) => {

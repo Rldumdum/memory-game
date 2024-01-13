@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import "./styles/outerCard.scss";
+import "./styles/outerCard.css";
 import CardItem from "./components/CardItem";
 import { Shake } from "reshake";
 import Modal from "react-modal";
